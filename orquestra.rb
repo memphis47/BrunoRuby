@@ -615,65 +615,62 @@ def AssociarOrquestraIntegrante
 		listaOrquestra=Orchestra.all
 		puts "----------------------------------"
 		listaOrquestra.each do |orquestraListada|
-			puts "Id: #{orquestra.id} Nome: #{orquestra.nome}"
+			puts "Id: #{orquestraListada.id} Nome: #{orquestraListada.nome}"
+			puts "----------------------------------"
 		end
 	end
 	puts("Qual Orquestra você quer Associar à um integrante ?,caso não deseje associar a nenhum Integrante aperte enter")
 	nomeOrc=gets.chomp
 	if(nomeOrc!="")
-		orquestras=Orchestra.where(:nome => nomeOrc).first
-		if(orquestras != nil)
-			#puts "Foi encontrado as seguintes Orquestras, digite o Id de uma delas para continuar a associacao ,ou aperte enter caso não deseje associar nenhuma delas"		
-			#orquestras.each do |orquestra|
-			#	puts "Id: #{orquestra.id} Nome: #{orquestra.nome}"		
-			#end
-			idOrques=gets.chomp
-			if(idOrques!="")
-				orquestraFind=Orchestra.where(:id=> idOrques)
-				if(!orquestraFind.empty?)
-					puts("Qual Integrante você deseja associar a sua orquestra")
-					nomeIn=gets.chomp
-					integrantes=Integrant.where(:nome => nomeIn)
-					if(!integrantes.empty?)
-						puts "Foi encontrado os seguintes integrantes, digite o Id de um deles para associar a orquestra,ou aperte enter caso não deseje associar nenhum maestro"		
-						integrantes.each do |integrante|
-							puts "Id: #{integrante.id} Nome: #{integrante.nome}"		
-						end
-						idintegrante=gets.chomp
-						if(idintegrante!="")
-							integranteFind=Integrant.where(:id=> idintegrante)
-							if(!integranteFind.empty?)
-								if(integranteFind.first.orchestra_id!=nil)
-									puts("Já existe uma Orquestra associada a esse integrante deseja dessasocia-la ?")
-									resp=gets.chomp.downcase		
-									if(resp=="sim" || resp=="s")
-										integranteFind.first.orchestra_id=orquestraFind.first.id
-										integranteFind.first.save()
-										puts "integrante Associado"
-									else
-										puts "Ok, adeus"
-									end
-								else
-									puts "Deseja associar o integrante #{integranteFind.first.nome} a orquestra #{orquestraFind.first.nome}"
-									resp=gets.chomp.downcase		
-									if(resp=="sim" || resp=="s")
-										integranteFind.first.orchestra_id=orquestraFind.first.id
-										integranteFind.first.save()
-										puts "integrante Associado"
-									else
-										puts "Ok, adeus"
-									end
-								end
-							end
-						end
-					else
-						puts("Não foi encontrado nenhum integrante com esse nome")
+		orquestraFind=Orchestra.where(:nome => nomeOrc).first
+		if(orquestraFind != nil)
+			puts "Deseja ver uma lista de integrantes disponiveis ?"
+			resp=gets.chomp.downcase		
+			if(resp=="sim" || resp=="s")
+				listaIntegrante=Integrant.all
+				puts "----------------------------------"
+				listaIntegrante.each do |integranteListado|
+					if(integranteListado.nome != nil)
+						puts "Id: #{integranteListado.id} Nome: #{integranteListado.nome}"
+						puts "----------------------------------"
 					end
 				end
 			end
+			puts("Qual o ID do Integrante que você deseja associar a sua orquestra")
+			idintegrante=gets.chomp
+			if(idintegrante!="")
+				integranteFind=Integrant.where(:id=> idintegrante)
+				if(!integranteFind.empty?)
+					if(integranteFind.first.orchestra_id!=nil)
+						puts("Já existe uma Orquestra associada a esse integrante deseja dessasocia-la ?")
+						resp=gets.chomp.downcase		
+						if(resp=="sim" || resp=="s")
+							integranteF
+							ind.first.orchestra_id=orquestraFind.first.id
+							integranteFind.first.save()
+							puts "integrante Associado"
+						else
+							puts "Ok, adeus"
+						end
+					else
+						puts "Deseja associar o integrante #{integranteFind.first.nome} a orquestra #{orquestraFind.nome}"
+						resp=gets.chomp.downcase		
+						if(resp=="sim" || resp=="s")
+							integranteFind.first.orchestra_id=orquestraFind.id
+							integranteFind.first.save()
+							puts "integrante Associado"
+						else
+							puts "Ok, adeus"
+						end
+					end
+				end
+			end
+		else
+			puts("Não foi encontrado nenhuma Orquestra com esse nome")
 		end
 	end
 end
+
 
 def limparTela()
 	puts "Aperte enter para continuar"
