@@ -171,9 +171,6 @@ class Orchestra < ActiveRecord::Base;
 			end
 		end
 	end
-
-
-
 end
 
 class Conductor < ActiveRecord::Base;
@@ -312,10 +309,6 @@ class Conductor < ActiveRecord::Base;
 			end
 		end
 	end
-	
-
-
-	
 end
 
 class Instrument < ActiveRecord::Base;
@@ -334,6 +327,7 @@ class Instrument < ActiveRecord::Base;
 		end
 	end
 
+	
 	
 	def MostrarInstrumento
 		instrus= Instrument.all
@@ -386,8 +380,6 @@ class Instrument < ActiveRecord::Base;
 			end
 		end
 	end
-	
-	
 end
 
 class Integrant < ActiveRecord::Base;
@@ -400,8 +392,7 @@ class Integrant < ActiveRecord::Base;
 			self.nome=nome
 			self.save()
 			puts "Seu Integrante foi salvo"
-		end
-		if(nome==nil)
+		else
 			puts 'Seu Integrante precisa de um nome'
 		end
 	end
@@ -445,7 +436,8 @@ class Integrant < ActiveRecord::Base;
 					when (integrante.nome==nil)
 						puts ""
 					else
-						puts "#{integrante.nome}, que pertence a orquestra #{orchestra.first.nome}, e toca o instrumento #{instrumento.first.tipo}"			end 
+						puts "#{integrante.nome}, que pertence a orquestra #{orchestra.first.nome}, e toca o instrumento #{instrumento.first.tipo}"			
+				end 
 			end
 		end
 	end
@@ -481,7 +473,7 @@ class Integrant < ActiveRecord::Base;
 			end
 		end
 	end
-
+end
 
 
 
@@ -507,46 +499,46 @@ def ApagarInstrumento()
 end
 
 def AssociarOrquestraInstrumento
+	puts "Deseja ver uma lista de orquestras disponiveis ?"
+	resp=gets.chomp.downcase		
+	if(resp=="sim" || resp=="s")
+		listaOrquestra=Orchestra.all
+		puts "----------------------------------"
+		listaOrquestra.each do |orquestraListada|
+			puts "Id: #{orquestraListada.id} Nome: #{orquestraListada.nome}"
+			puts "----------------------------------"
+		end
+	end
 	puts("Qual Orquestra você quer Associar à um Instrumento ?,caso não deseje associar a nenhum maestro aperte enter")
 	nomeOrc=gets.chomp
 	if(nomeOrc!="")
-		orquestras=Orchestra.where(:nome => nomeOrc)
-		if(!orquestras.empty?)
-			puts "Foi encontrado as seguintes Orquestras, digite o Id de uma delas para continuar a associacao ,ou aperte enter caso não deseje associar nenhuma delas"		
-			orquestras.each do |orquestra|
-				puts "Id: #{orquestra.id} Nome: #{orquestra.nome}"		
+		orquestraFind=Orchestra.where(:nome => nomeOrc).first
+		if(orquestraFind != nil)
+			puts "Deseja ver uma lista de instrumentos disponiveis ?"
+			resp=gets.chomp.downcase		
+			if(resp=="sim" || resp=="s")
+				listaInstrumento=Instrument.all
+				puts "----------------------------------"
+				listaInstrumento.each do |instrumentoListado|
+					puts "Id: #{instrumentoListado.id} Nome: #{instrumentoListado.tipo}"
+					puts "----------------------------------"
+				end
 			end
-			idOrques=gets.chomp
-			if(idOrques!="")
-				orquestraFind=Orchestra.where(:id=> idOrques)
-				if(!orquestraFind.empty?)
-					puts("Qual instrumento você deseja associar a sua orquestra")
-					nomeIn=gets.chomp
-					instrumento=Instrument.where(:tipo => nomeIn)
-					if(!instrumento.empty?)
-						puts "Foi encontrado os seguintes instrumento, digite o Id de um deles para associar a orquestra,ou aperte enter caso não deseje associar nenhum maestro"		
-						instrumento.each do |instrumento|
-							puts "Id: #{instrumento.id} Nome: #{instrumento.tipo}"		
-						end
-						instrumentoId=gets.chomp
-						if(instrumentoId!="")
-							instrumentoFind=Instrument.where(:id=> instrumentoId)
-							if(!instrumentoFind.empty?)
-								puts "Deseja associar o instrumento #{instrumentoFind.first.tipo} a orquestra #{orquestraFind.first.nome}"
-								resp=gets.chomp.downcase		
-								if(resp=="sim" || resp=="s")
-									orquestraFind.first.instruments << instrumentoFind
-								else
-									puts "Ok"
-								end
-							end
-						end
-					else
-						puts "Não foi encontrado nenhum instrumento"
-					end
+			puts("Qual instrumento você deseja associar a sua orquestra")
+			nomeIn=gets.chomp
+			instrumento=Instrument.where(:tipo => nomeIn)
+			if(!instrumento.empty?)
+				puts "Deseja associar o instrumento #{instrumentoFind.first.tipo} a orquestra #{orquestraFind.first.nome}"
+				resp=gets.chomp.downcase		
+				if(resp=="sim" || resp=="s")
+					orquestraFind.first.instruments << instrumentoFind
+				else
+					puts "Ok"
 				end
 			end
 		end
+	else
+		puts "Não foi encontrado nenhum instrumento"
 	end
 end
 
@@ -609,7 +601,7 @@ def AssociarOrquestraMaestro
 			end
 		end
 	end
-end			
+end
 
 def AssociarOrquestraIntegrante
 	puts "Deseja ver uma lista de orquestras disponiveis ?"
