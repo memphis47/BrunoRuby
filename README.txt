@@ -160,7 +160,7 @@ Nesse readme você encontra as seguintes explicações :
             
         3.2.4 - Mostrar Orquestra
           
-                Ao digitar o número 4 e pressionar enter será mostrado todas as orquestras que estão cadastradas no banco
+                Ao digitar o número 4 e pressionar enter será mostrado todas as orquestras que estão cadastradas no banco e suas associações .
                 
                 
         3.2.5 - Associar Maestro
@@ -235,17 +235,80 @@ Nesse readme você encontra as seguintes explicações :
         4.2.5 - Associar Maestro
           
                 Ao digitar o número 5 e pressionar enter você será direcionado ao menu de associação de Maestro, aonde você poderá associar sua orquestra à um maestro, lembre-se que a associação entre o maestro e a orquestra é de 1 para 1 , ou seja um maestro por orquestra, uma orquestra para um maestro, se você associar um maestro que já esteja associado a uma orquestra, em outra orquestra você irá perder a associação com a orquestra anterior, assim como associar um maestro a uma orquestra que já tenha um maestro, a orquestra irá perder a associação com o antigo maestro.
+                
+        4.2.6 - Sair
+          
+                Ao digitar o número 6 você ira voltar ao menu inicial.
+                
+
+
+3- Menu Integrante
+
+    3.1- Apresentação do Menu
+  
+         
+         Esse é o Menu Integrante :
+    
+    
+      "#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#"
+      "#       Gerenciador de orquestras     #"
+      "#                                     #"
+      "#             Integrante              #"
+      "#                                     #"
+      "#       Digite um número abaixo       #"
+      "#       para continuar                #"
+      "#                                     #"
+      "#       1-Criar Integrante            #"
+      "#       2-Alterar Integrante          #"
+      "#       3-Apagar Integrante           #"
+      "#       4-Mostrar Integrante          #"
+      "#       5-Associar Integrante         #"
+      "#       6-Associar Integrante         #"
+      "#       7-Associar Instrumento        #"
+      "#       8-Sair                        #"
+      "#                                     #"
+      "#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#"
+          
+          
+          Para acessar cada item basta digitar um desses números e apertar a tecla Enter
+          
+    3.2- Explicação dos Itens do Menu
+      
+        3.2.1 - Criar Integrante
+          
+                Ao digitar o número 1 e pressionar enter você será direcionado ao menu de Criação de Integrante, você deverá digitar o nome e a cidade dela para que sua Integrante seja salva.
+                
+                
+        3.2.2 - Alterar Integrante
+          
+                Ao digitar o número 2 e pressionar enter você será direcionado ao menu de Alterar Integrante, você poderá alterar o nome e/ou a cidade dela .
+            
+                
+        3.2.3 - Apagar Integrante
+        
+                Ao digitar o número 3 e pressionar enter você será direcionado ao menu de Apagar Integrante, aonde você ira excluir sua Integrante , lembre-se que ao excluir uma Integrante você ira desassociar sua Integrante de seus integrantes,maestro e instrumentos.
+              
+            
+        3.2.4 - Mostrar Integrante
+          
+                Ao digitar o número 4 e pressionar enter será mostrado todas as Integrante que estão cadastradas no banco e suas associações .
+                
+                
+        3.2.5 - Associar Maestro
+          
+                Ao digitar o número 5 e pressionar enter você será direcionado ao menu de associação de Maestro, aonde você poderá associar sua orquestra à um maestro, lembre-se que a associação entre o maestro e a orquestra é de 1 para 1 , ou seja um maestro por orquestra, uma orquestra para um maestro, se você associar um maestro que já esteja associado a uma orquestra, em outra orquestra você irá perder a associação com a orquestra anterior, assim como associar um maestro a uma orquestra que já tenha um maestro, a orquestra irá perder a associação com o antigo maestro.
            
                 
-        4.2.6 - Associar Integrante
+        3.2.6 - Associar Integrante
           
               Ao digitar o número 6 e pressionar enter você será direcionado ao menu de associação de Maestro, aonde você poderá associar sua orquestra à um integrante, lembre-se que a associação entre o integrante e a orquestra é de 1 para N , ou seja n integrantes por orquestra, e uma orquestra para um integrante, se você associar uma orquestra em um integrante que já tenha uma associação com orquestra você perdera essa associação.
                 
-        4.2.7 - Associar Instrumento
+        3.2.7 - Associar Instrumento
           
               Ao digitar o número 7 e pressionar enter você será direcionado ao menu de associação de Instrumento, aonde você poderá associar sua orquestra à um instrumento, a associação entre o instrumento e a orquestra é de N para N , ou seja n integrantes por orquestra, e N orquestras por instrumento.
                 
                 
-        4.2.8 - Sair
+        3.2.8 - Sair
           
-                Ao digitar o número 8 você ira voltar ao menu inicial.
+                Ao digitar o número 8 você ira voltar ao menu inicial.               
+                
